@@ -14,14 +14,14 @@ private int bagSize;
 
     // class info checking methods
 
-    public boolean contains(String item){
+    private boolean contains(String item){
         if (this.items.contains(item)){
             return true;
         }
         return false;
     }
 
-    public void capacity(){
+    private void capacity(){
         if ((this.items.size()) == this.bagSize) {
             System.out.println("Your bag is at capacity, you cannot add more items without dropping something first.");
         }
@@ -55,8 +55,8 @@ private int bagSize;
     }
 
     public void use(String item) {
-        System.out.println("You used the "+ item + ". It has been removed from your bag.");
         this.drop(item);
+        System.out.println("You used the "+ item + ". It has been removed from your bag.");
     }    
 
     // bag size methods
@@ -124,20 +124,19 @@ private int bagSize;
     public static void main(String[] args) {
         Crow meep = new Crow();
         meep.showOptions();
-        meep.grab("The sauce");
-        meep.grow();
-        meep.shrink();
         meep.grow();
         meep.grab("jewel");
         meep.showInventory();
-        meep.use("The sauce");
         meep.checkCapacity();
         meep.examine("jewel");
         meep.grab("The sauce");
         meep.grow();
         meep.grab("cup");
-        meep.use("cup");
-        meep.shrink();
-        
+        meep.rest();
+        meep.undo();
+        meep.walk("North");
+        meep.fly(10,10);
+        meep.fly(0, 20);
+        meep.examine("cup");
     }
 }
